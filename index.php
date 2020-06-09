@@ -108,7 +108,7 @@ if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
     echo "<input type=\"hidden\" name=\"choisis\" value=\"$path\"/><br>";
     echo "<button type=\"submit\" name=\"choisis\" value=\"$path\\..\" class=\"inline\">..</button>";
     echo "<button type=\"submit\" name=\"save\" value=\"save\" class=\"inline\">Enregistrer</button><br>";
-    echo "<textarea rows=\"36\" name=\"content\">".htmlentities(file_get_contents($path))."</textarea>";
+    echo "<textarea rows=\"36\" name=\"content\">".htmlentities(file_get_contents($relative_path . $path))."</textarea>";
 
   }
      ?>
