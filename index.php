@@ -5,7 +5,7 @@ if (isset($_POST['choisis'])) {
 
   $selected = explode("\\", $_POST["choisis"]);
   $clear = array();
-  foreach($selectd as $i => $v)
+  foreach($selected as $i => $v)
   {
   if(empty($v)) $clear[] = $i;
   if($v === "..")
