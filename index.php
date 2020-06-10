@@ -48,7 +48,6 @@ function delete_dir($p) {
   rmdir($p);
 }
 if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
-
   delete_dir($relative_path . $path . "\\" . $_POST['name']);
 }
 
@@ -59,22 +58,22 @@ if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
   <head>
     <meta charset="utf-8">
     <title><?= $path ?></title>
-    <style>
-    textarea {
-      width: 90%;
-    }
-    body, html {
-    position: relative;
-    height: 100%;
-    }
+      <style>
+        textarea {
+          width: 90%;
+        }
+        body, html {
+          position: relative;
+          height: 100%;
+        }
 
-    * {
-    box-sizing: border-box;
-    }
-    .inline {
-      display: inline;
-    }
-</style>
+        * {
+          box-sizing: border-box;
+        }
+        .inline {
+          display: inline;
+        }
+    </style>
   </head>
   <body>
     <h6><?= $path ?></h6>
