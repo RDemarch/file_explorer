@@ -88,8 +88,17 @@ if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
     echo "<button type=\"submit\" name=\"file\" value=\"file_create\">Créer Fichier</button>";
     echo "<button type=\"submit\" name=\"file\" value=\"file_delete\">Supprimer Fichier</button>";
 
+
     echo "<button type=\"submit\" name=\"dir\" value=\"dir_create\">Créer Dossier</button>";
     echo "<button type=\"submit\" name=\"dir\" value=\"dir_delete\">Supprimer Dossier</button><br>";
+    echo "<button type=\"submit\" name=\"choisis\" value=\"$corbeille\">Corbeille</button><br>";
+?>
+<table>
+  <th>nom</th>
+  <th>type</th>
+  <th>dernière modification</th>
+  <th>poids</th>
+<?php
 
     $dir_content = scandir($relative_path . $path);
     foreach ($dir_content as $item) {
@@ -99,8 +108,20 @@ if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
       elseif ($item === ".." AND empty($path)) {
         continue;
       }
+        setlocale(LC_TIME, "fr_FR", "French");
+        $datean = date ("d F Y H:i:s", filemtime ($relative_path . $path . "\\" . $item));
+        $datefr = strftime("%d %B %G %T", strtotime($datean));
+        if (!is_dir($relative_path . $path . "\\" . $item)) {
+          $weight = filesize($relative_path . $path . "\\" . $item) . " octets";
+        }
+        else {
+          $weight = "";
+        }
+        $type = mime_content_type($relative_path . $path . "\\" . $item);
 
-        echo "<button type=\"submit\" name=\"choisis\" value=\"$path\\$item\">$item</button><br>";
+
+        echo "<tr><td><button type=\"submit\" name=\"choisis\" value=\"$path\\$item\">$item</button></td><td>$type</td><td>$datefr</td><td>$weight</td><tr>";
+
     }
   }
   else {
@@ -110,7 +131,9 @@ if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
     echo "<textarea rows=\"36\" name=\"content\">".htmlentities(file_get_contents($relative_path . $path))."</textarea>";
 
   }
+
      ?>
+   </table>
 </form>
   </body>
 </html>
