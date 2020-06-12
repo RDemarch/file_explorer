@@ -91,7 +91,7 @@ if (isset($_POST['dir']) AND $_POST['dir'] === "dir_delete") {
 
     echo "<button type=\"submit\" name=\"dir\" value=\"dir_create\">Créer Dossier</button>";
     echo "<button type=\"submit\" name=\"dir\" value=\"dir_delete\">Supprimer Dossier</button><br>";
-    echo "<button type=\"submit\" name=\"choisis\" value=\"$corbeille\">Corbeille</button><br>";
+
 ?>
 <table>
   <th>nom</th>
